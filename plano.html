@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AEPRO × Monopolize — Plano interno</title>
+<meta name="description" content="Plano de ativação da live Monopolize White Label — uso interno da equipe.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<style>
+  :root{
+    --bg:#080F1F;
+    --bg-card:#121A2C;
+    --bg-panel:#1D263A;
+    --hairline:rgba(236,189,81,.16);
+    --hairline-strong:rgba(236,189,81,.30);
+    --ink:#F4F2EA;
+    --ink-muted:#A79D8B;
+    --gold:#ECBD51;
+    --copper:#D7935A;
+    --gold-soft:rgba(236,189,81,.10);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Karla",system-ui,sans-serif;font-size:15.5px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:600;text-wrap:balance;margin:0;}
+  p{margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+  .accent{color:var(--gold);font-style:italic;}
+  .divider{height:1px;background:var(--hairline);margin:0;}
+  section{padding:52px 0;}
+
+  /* header */
+  .header{padding:40px 0 40px;}
+  .back-link{
+    display:inline-flex;align-items:center;gap:6px;color:var(--ink-muted);
+    font-size:.82rem;text-decoration:none;margin-bottom:20px;
+  }
+  .back-link:hover{color:var(--gold);}
+  .brand-row{display:flex;align-items:center;gap:14px;}
+  .brand-row img{height:44px;width:44px;border-radius:10px;flex:none;}
+  .badge-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px;}
+  .badge{
+    background:var(--gold);color:#1a1305;font-weight:700;font-size:.68rem;
+    letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:5px;
+  }
+  .eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);}
+  h1.title{font-size:clamp(2rem,4.4vw,2.9rem);margin-top:16px;}
+  .header p.sub{margin-top:16px;color:var(--ink-muted);max-width:66ch;font-size:1rem;}
+
+  .fact-strip{
+    margin-top:32px;display:grid;grid-template-columns:repeat(4,1fr);
+    border:1px solid var(--hairline);border-radius:14px;overflow:hidden;background:var(--bg-card);
+  }
+  .fact{padding:18px 16px;border-right:1px solid var(--hairline);}
+  .fact:last-child{border-right:none;}
+  .fact .k{font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-muted);}
+  .fact .v{font-family:"Playfair Display",serif;font-size:1.3rem;color:var(--gold);margin-top:4px;font-variant-numeric:tabular-nums;}
+  .fact .v.editable{cursor:text;border-bottom:1px dashed var(--hairline-strong);}
+  .fact .v.editable:focus{outline:none;background:var(--gold-soft);}
+
+  .countdown-line{margin-top:18px;color:var(--ink-muted);font-size:.85rem;}
+  .countdown-line b{color:var(--gold);font-variant-numeric:tabular-nums;}
+
+  /* section numbering */
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;}
+  .sec-num{font-family:"Playfair Display",serif;font-size:1.6rem;color:var(--copper);}
+  .sec-head h2{font-size:1.5rem;}
+  .sec-kicker{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px;}
+
+  /* 3 minute plan */
+  .plan-list{display:flex;flex-direction:column;gap:0;}
+  .plan-item{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--hairline);}
+  .plan-item:last-child{border-bottom:1px solid var(--hairline);}
+  .plan-item .label{font-weight:700;color:var(--gold);font-size:.85rem;letter-spacing:.02em;}
+  .plan-item p{color:var(--ink);font-size:.92rem;}
+  .plan-item p .muted{color:var(--ink-muted);}
+
+  /* timeline */
+  .timeline{display:flex;flex-direction:column;gap:0;}
+  .t-row{
+    display:grid;grid-template-columns:28px 108px 1fr;gap:16px;align-items:flex-start;
+    padding:16px 0;border-top:1px solid var(--hairline);
+  }
+  .t-row:last-child{border-bottom:1px solid var(--hairline);}
+  .t-row.live{background:var(--gold-soft);margin:0 -20px;padding:16px 20px;border-radius:10px;border-top:1px solid var(--hairline-strong);}
+  .t-check{
+    appearance:none;width:20px;height:20px;border-radius:6px;border:1.5px solid var(--hairline-strong);
+    background:transparent;cursor:pointer;margin-top:2px;position:relative;flex:none;
+  }
+  .t-check:checked{background:var(--gold);border-color:var(--gold);}
+  .t-check:checked::after{
+    content:"✓";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:.8rem;color:#1a1305;font-weight:700;
+  }
+  .t-date{font-size:.8rem;color:var(--ink-muted);font-variant-numeric:tabular-nums;line-height:1.4;}
+  .t-date b{display:block;color:var(--ink);font-weight:700;font-size:.86rem;}
+  .t-body .t-title{font-weight:700;font-size:.9rem;}
+  .t-body p{color:var(--ink-muted);font-size:.88rem;margin-top:3px;}
+  .t-row.done .t-title, .t-row.done p{opacity:.5;text-decoration:line-through;}
+
+  /* roteiro */
+  .roteiro{display:flex;flex-direction:column;gap:0;}
+  .r-row{display:grid;grid-template-columns:90px 1fr;gap:18px;padding:16px 0;border-top:1px solid var(--hairline);}
+  .r-row:last-child{border-bottom:1px solid var(--hairline);}
+  .r-time{font-size:.78rem;color:var(--copper);font-weight:700;}
+  .r-body .r-title{font-weight:700;font-size:.92rem;}
+  .r-body p{color:var(--ink-muted);font-size:.87rem;margin-top:3px;}
+
+  /* pendencias */
+  .pend-list{display:flex;flex-direction:column;gap:12px;}
+  .pend-item{
+    display:flex;gap:14px;align-items:flex-start;background:var(--bg-card);
+    border:1px solid var(--hairline);border-radius:12px;padding:14px 16px;
+  }
+  .pend-item p{font-size:.9rem;color:var(--ink);}
+  .pend-item.done{opacity:.5;}
+  .pend-item.done p{text-decoration:line-through;}
+  .progress-wrap{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+  .progress-bar{flex:1;height:8px;border-radius:99px;background:var(--bg-card);border:1px solid var(--hairline);overflow:hidden;}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--copper),var(--gold));width:0%;transition:width .3s;}
+  .progress-pct{font-size:.8rem;color:var(--gold);font-weight:700;font-variant-numeric:tabular-nums;min-width:38px;text-align:right;}
+
+  .sync-note{font-size:.72rem;color:var(--ink-muted);margin-top:6px;}
+
+  footer{padding:40px 0 56px;text-align:center;}
+  footer p{color:var(--ink-muted);font-size:.78rem;}
+  footer .small{margin-top:8px;font-size:.7rem;color:#5f594c;}
+
+  @media (max-width:720px){
+    .fact-strip{grid-template-columns:1fr 1fr;}
+    .fact:nth-child(2){border-right:none;}
+    .fact{border-bottom:1px solid var(--hairline);}
+    .plan-item{grid-template-columns:1fr;}
+    .t-row{grid-template-columns:22px 1fr;}
+    .t-date{grid-column:2;order:-1;display:flex;gap:6px;align-items:baseline;}
+    .t-date b{display:inline;}
+    .r-row{grid-template-columns:1fr;}
+  }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,500&family=Karla:wght@400;500;700&display=swap">
+</head>
+<body>
+
+<div class="wrap header">
+  <a href="index.html" class="back-link">← voltar para a página de inscrição</a>
+  <div class="brand-row">
+    <img src="logo.png" alt="Método Monopolize">
+    <div>
+      <div class="badge-row">
+        <span class="badge">Uso interno</span>
+        <span class="eyebrow">Operação Live Monopolize · Set/2026</span>
+      </div>
+    </div>
+  </div>
+  <h1 class="title">AEPRO <span class="accent">×</span> Monopolize</h1>
+  <p class="sub">Plano de ativação da live gratuita "Monopolize White Label" para a base de afiliados da Maisfy — Paulo Henrique (Monopolize) como mentor, Elias Evangelista como host e Domingos (Maisfy) como co-host. Ao vivo, terça 15/09 às 19h30 (Brasília).</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="k">Live</div><div class="v">15/09 · 19h30</div></div>
+    <div class="fact"><div class="k">Ticket</div><div class="v">R$ 20.000</div></div>
+    <div class="fact"><div class="k">Comissão Maisfy</div><div class="v">9% · R$ 1.800</div></div>
+    <div class="fact"><div class="k">Meta de inscritos</div><div class="v editable" id="meta-inscritos" contenteditable="true" spellcheck="false">a definir</div></div>
+  </div>
+  <p class="countdown-line" id="countdown-line">— para a live · terça 15/09 · 19h30 (Brasília)</p>
+  <p class="sync-note" id="sync-note">Marcações e campos editáveis salvam neste navegador (não são compartilhados entre computadores).</p>
+</div>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><div><span class="sec-kicker">O plano em 3 minutos</span><h2>A operação em seis frases</h2></div></div>
+    <div class="plan-list">
+      <div class="plan-item"><div class="label">O evento</div><p>Live gratuita ao vivo, terça 15/09 às 19h30. Elias conduz, Paulo entra como prova e autoridade do Método Monopolize, Domingos ativa a base Maisfy.</p></div>
+      <div class="plan-item"><div class="label">A oferta</div><p>Monopolize White Label: ticket de <span class="muted">R$ 20.000</span>, comissão de <span class="muted">9% (R$ 1.800)</span> por venda para quem indica pela Maisfy.</p></div>
+      <div class="plan-item"><div class="label">O público</div><p>Base de afiliados Maisfy: quem já vende alto ticket, quem investe em tráfego pago e quem tem audiência própria para monetizar.</p></div>
+      <div class="plan-item"><div class="label">O mecanismo</div><p>Inscrição na landing page → grupo exclusivo → link da live liberado no dia → oferta e link de afiliação Maisfy no pós-live.</p></div>
+      <div class="plan-item"><div class="label">Os números</div><p><span class="muted">Metas de inscritos e vendas ainda em aberto — preencher acima e na seção 03 assim que o time alinhar.</span></p></div>
+      <div class="plan-item"><div class="label">Esta semana</div><p>Confirmar link do grupo exclusivo, destino real dos leads da landing page e teaser em vídeo com o Paulo convidando a base.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><div><span class="sec-kicker">Calendário · modelo sugerido, ajuste com o time</span><h2>De hoje até a live — e dois dias depois</h2></div></div>
+    <div class="timeline" id="timeline">
+      <div class="t-row" data-id="d1">
+        <input type="checkbox" class="t-check" data-id="d1">
+        <div class="t-date"><b>D-14</b>01/09 · ter</div>
+        <div class="t-body"><div class="t-title">Kickoff</div><p>Confirmar oferta, link do grupo exclusivo e acessos (pixel, base de afiliados Maisfy).</p></div>
+      </div>
+      <div class="t-row" data-id="d2">
+        <input type="checkbox" class="t-check" data-id="d2">
+        <div class="t-date"><b>D-10</b>05/09 · sáb</div>
+        <div class="t-body"><div class="t-title">Landing no ar</div><p>Página de inscrição publicada + primeiros disparos de captação para a base Maisfy.</p></div>
+      </div>
+      <div class="t-row" data-id="d3">
+        <input type="checkbox" class="t-check" data-id="d3">
+        <div class="t-date"><b>D-7</b>08/09 · ter</div>
+        <div class="t-body"><div class="t-title">Reforço de captação</div><p>Segundo disparo + post + stories de contagem regressiva.</p></div>
+      </div>
+      <div class="t-row" data-id="d4">
+        <input type="checkbox" class="t-check" data-id="d4">
+        <div class="t-date"><b>D-3</b>12/09 · sáb</div>
+        <div class="t-body"><div class="t-title">Aquecimento do grupo</div><p>Boas-vindas, prova social e teaser do que vem na live.</p></div>
+      </div>
+      <div class="t-row" data-id="d5">
+        <input type="checkbox" class="t-check" data-id="d5">
+        <div class="t-date"><b>D-1</b>14/09 · seg</div>
+        <div class="t-body"><div class="t-title">Lembrete final</div><p>Teste técnico da transmissão + confirmação de horário (19h30) para o grupo.</p></div>
+      </div>
+      <div class="t-row live" data-id="d6">
+        <input type="checkbox" class="t-check" data-id="d6">
+        <div class="t-date"><b>D0</b>15/09 · ter</div>
+        <div class="t-body"><div class="t-title">DIA DA LIVE</div><p>Abertura 19h30 · roteiro completo na seção 04 · oferta e link liberados no grupo ao final.</p></div>
+      </div>
+      <div class="t-row" data-id="d7">
+        <input type="checkbox" class="t-check" data-id="d7">
+        <div class="t-date"><b>D+1</b>16/09 · qua</div>
+        <div class="t-body"><div class="t-title">Replay + follow-up</div><p>Replay liberado por 24h + follow-up dos presentes que não converteram.</p></div>
+      </div>
+      <div class="t-row" data-id="d8">
+        <input type="checkbox" class="t-check" data-id="d8">
+        <div class="t-date"><b>D+2</b>17/09 · qui</div>
+        <div class="t-body"><div class="t-title">Fechamento</div><p>Encerra a janela de oferta + debrief: inscritos, presença e vendas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><div><span class="sec-kicker">Premissas & números</span><h2>O que já sabemos — e o que falta fechar</h2></div></div>
+    <div class="fact-strip" style="grid-template-columns:repeat(4,1fr);">
+      <div class="fact"><div class="k">Ticket</div><div class="v">R$ 20.000</div></div>
+      <div class="fact"><div class="k">Comissão</div><div class="v">9% · R$ 1.800</div></div>
+      <div class="fact"><div class="k">Meta de vendas</div><div class="v editable" id="meta-vendas" contenteditable="true" spellcheck="false">a definir</div></div>
+      <div class="fact"><div class="k">Base Maisfy</div><div class="v editable" id="base-maisfy" contenteditable="true" spellcheck="false">a definir</div></div>
+    </div>
+    <p class="sync-note" style="margin-top:10px;">Os campos "a definir" são editáveis — clique, digite e saia do campo para salvar (neste navegador).</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><div><span class="sec-kicker">A live · ter 15/09 · 19h30</span><h2>Roteiro em sete blocos</h2></div></div>
+    <div class="roteiro">
+      <div class="r-row"><div class="r-time">5 min</div><div class="r-body"><div class="r-title">Abertura</div><p>Elias recebe e contextualiza a parceria Monopolize × Maisfy.</p></div></div>
+      <div class="r-row"><div class="r-time">15 min</div><div class="r-body"><div class="r-title">O mercado</div><p>R$ 7 bi/ano, 1,2 milhão de formandos: por que formaturas é uma máquina de vendas que se renova todo ano.</p></div></div>
+      <div class="r-row"><div class="r-time">15 min</div><div class="r-body"><div class="r-title">A prova</div><p>Paulo Henrique apresenta o Método Monopolize — 15 anos de mercado, certificação MEC (FABRANI).</p></div></div>
+      <div class="r-row"><div class="r-time">15 min</div><div class="r-body"><div class="r-title">A matemática da comissão</div><p>Como funciona o ticket de R$ 20.000 e os 9% = R$ 1.800 por venda.</p></div></div>
+      <div class="r-row"><div class="r-time">15 min</div><div class="r-body"><div class="r-title">As frentes de venda</div><p>Tráfego pago, redes sociais, indicação e venda 1x1.</p></div></div>
+      <div class="r-row"><div class="r-time">10 min</div><div class="r-body"><div class="r-title">Como se afiliar</div><p>Domingos explica o cadastro na Maisfy e o acompanhamento de comissões.</p></div></div>
+      <div class="r-row"><div class="r-time">15 min</div><div class="r-body"><div class="r-title">Pitch + Q&amp;A</div><p>Oferta, condições e perguntas ao vivo.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><div><span class="sec-kicker">O que destrava a semana</span><h2>Pendências</h2></div></div>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-pct" id="progress-pct">0%</div>
+    </div>
+    <div class="pend-list" id="pend-list">
+      <label class="pend-item" data-id="p1"><input type="checkbox" class="t-check" data-id="p1"><p>Confirmar o link do grupo exclusivo (WhatsApp/Telegram) para redirecionar após a inscrição.</p></label>
+      <label class="pend-item" data-id="p2"><input type="checkbox" class="t-check" data-id="p2"><p>Testar o formulário de inscrição e definir o destino real dos leads (planilha, CRM ou e-mail).</p></label>
+      <label class="pend-item" data-id="p3"><input type="checkbox" class="t-check" data-id="p3"><p>Validar o af_id / link de afiliação da Maisfy antes de divulgar.</p></label>
+      <label class="pend-item" data-id="p4"><input type="checkbox" class="t-check" data-id="p4"><p>Gravar ou confirmar o teaser em vídeo com Paulo Henrique convidando a base.</p></label>
+      <label class="pend-item" data-id="p5"><input type="checkbox" class="t-check" data-id="p5"><p>Fechar com o time as metas de inscritos e de vendas (seção 03).</p></label>
+      <label class="pend-item" data-id="p6"><input type="checkbox" class="t-check" data-id="p6"><p>Confirmar quem opera a transmissão (Restream/Zoom/YouTube) no dia 15/09.</p></label>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Duas marcas, um posicionamento: o Método Monopolize chega à base Maisfy ao vivo, 15/09 às 19h30.</p>
+    <p class="small" id="footer-date">AEPRO × MONOPOLIZE · Plano v1</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var target = new Date("2026-09-15T19:30:00-03:00").getTime();
+  var line = document.getElementById('countdown-line');
+  function tick(){
+    var diff = Math.max(0, target - Date.now());
+    var d = Math.floor(diff/86400000);
+    var h = Math.floor((diff%86400000)/3600000);
+    var m = Math.floor((diff%3600000)/60000);
+    line.innerHTML = '<b>'+d+'</b> dias, <b>'+h+'</b>h e <b>'+m+'</b>min para a live · terça 15/09 · 19h30 (Brasília)';
+  }
+  tick(); setInterval(tick,60000);
+
+  document.getElementById('footer-date').textContent =
+    'AEPRO × MONOPOLIZE · Plano v1 · atualizado ' +
+    new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+
+  var STORAGE_KEY_CHECKS = 'aepro-monopolize-checklist';
+  var STORAGE_KEY_METAS = 'aepro-monopolize-metas';
+
+  function loadJSON(key){
+    try{
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : {};
+    }catch(e){ return {}; }
+  }
+  function saveJSON(key, obj){
+    try{ localStorage.setItem(key, JSON.stringify(obj)); }catch(e){}
+  }
+
+  var checks = Array.prototype.slice.call(document.querySelectorAll('.t-check'));
+  var editables = [
+    {el: document.getElementById('meta-inscritos'), field:'inscritos'},
+    {el: document.getElementById('meta-vendas'), field:'vendas'},
+    {el: document.getElementById('base-maisfy'), field:'baseMaisfy'}
+  ];
+
+  function updateProgress(){
+    var pendChecks = checks.filter(function(c){ return c.dataset.id.charAt(0)==='p'; });
+    var done = pendChecks.filter(function(c){ return c.checked; }).length;
+    var pct = pendChecks.length ? Math.round(done/pendChecks.length*100) : 0;
+    document.getElementById('progress-fill').style.width = pct+'%';
+    document.getElementById('progress-pct').textContent = pct+'%';
+  }
+
+  function applyCheckState(id, doneVal){
+    var box = document.querySelector('.t-check[data-id="'+id+'"]');
+    if(!box) return;
+    box.checked = !!doneVal;
+    var row = box.closest('.t-row') || box.closest('.pend-item');
+    if(row) row.classList.toggle('done', !!doneVal);
+  }
+
+  // load saved state
+  var savedChecks = loadJSON(STORAGE_KEY_CHECKS);
+  Object.keys(savedChecks).forEach(function(id){ applyCheckState(id, savedChecks[id]); });
+  updateProgress();
+
+  var savedMetas = loadJSON(STORAGE_KEY_METAS);
+  editables.forEach(function(item){
+    if(savedMetas[item.field]) item.el.textContent = savedMetas[item.field];
+  });
+
+  checks.forEach(function(box){
+    box.addEventListener('change', function(){
+      applyCheckState(box.dataset.id, box.checked);
+      updateProgress();
+      var state = loadJSON(STORAGE_KEY_CHECKS);
+      state[box.dataset.id] = box.checked;
+      saveJSON(STORAGE_KEY_CHECKS, state);
+    });
+  });
+
+  editables.forEach(function(item){
+    item.el.addEventListener('blur', function(){
+      var val = item.el.textContent.trim() || 'a definir';
+      item.el.textContent = val;
+      var state = loadJSON(STORAGE_KEY_METAS);
+      state[item.field] = val;
+      saveJSON(STORAGE_KEY_METAS, state);
+    });
+  });
+})();
+</script>
+</body>
+</html>
